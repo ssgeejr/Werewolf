@@ -1,0 +1,245 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="material.min.css">
+<link rel="stylesheet" href="date-time-picker.css">
+<link rel="stylesheet" href="werewolf.css">
+<script src="jquery.min.js"></script>
+<script src="material.min.js"></script>
+<script src="moment-with-locales.min.js"></script>
+<script src="date-time-picker.js"></script>
+
+<script>
+	$(document).ready(function() {
+		$('#eventDate').bootstrapMaterialDatePicker({
+			format : 'MM/DD/YYYY HH:mm',
+			minDate : new Date()
+		});
+		$('#stopDate').bootstrapMaterialDatePicker({
+			format : 'MM/DD/YYYY HH:mm',
+			minDate : new Date()
+		});
+		
+		//available assigned
+	    $('#available').dblclick(function(e) {
+	        var selectedOpts = $('#available option:selected');
+	        if (selectedOpts.length == 0) {
+	            alert("Invalid selection ... ");
+	            e.preventDefault();
+	        }
+	        $('#assigned').append($(selectedOpts).clone());
+	        $(selectedOpts).remove();
+	        e.preventDefault();
+	    });
+	    $('#assigned').dblclick(function(e) {
+	        var selectedOpts = $('#assigned option:selected');
+	        if (selectedOpts.length == 0) {
+	            e.preventDefault();
+	        }
+	        $('#available').append($(selectedOpts).clone());
+	        $(selectedOpts).remove();
+	        e.preventDefault();
+	    });
+			    
+	    $(".recur").click(function () {
+		    $header = $(this);
+		    $content = $header.next();
+		    $("#recurbody").slideToggle(500, function () {
+		        $header.text(function () {
+		            return $content.is(":visible") ? "Collapse" : "Expand";
+		        });
+		    });
+		
+		});
+
+	});
+	//class="form-control floating-label"
+</script>
+<title>Werewolf Event Notification</title>
+</head>
+<body>
+	<form>
+		<div>
+			:&nbsp;
+		</div>
+	
+	<div align="center">
+	<table style="width: 500px" class="outline">
+	<tr>
+	<td style="height: 22px" colspan="2">
+		<b>Create New SMS Notification Event</b>
+	</td>
+	</tr>
+	<tr>
+	<td colspan="2">
+	<table style="width: 100%">
+		<tr>
+			<td style='width: 50%' class='bold_left' valign='top'>
+				Available<br>
+	            <select id='available' style='width: 100%;' name="available" size="6">
+	              <option value="1234567890">Dad</option>
+	              <option value="1234567890">Mom</option>
+	              <option value="1234567890">Coco</option>
+	              <option value="1234567890">Jordan</option>
+	              <option value="1234567890">Jacob</option>
+	              <option value="1234567890">Papa</option>
+		          <option value="1234567890">Nana</option>
+		          <option value="1234567890">Grandaddy</option>
+		          <option value="1234567890">Granmother</option>
+	           </select>
+           </td>
+			<td style='width: 50%' class='bold_left' valign="top">
+				Assigned<br>
+	        	<select id='assigned' style='width: 100%;' name="assigned" size="6">
+	        	<!-- empty bucket on load -->
+				</select>
+			</td>
+		</tr>
+	</table>
+	</td>
+	</tr>
+	<tr>
+	<td class="align_right">
+	Select Date Time&nbsp;&nbsp; </td>
+	<td class="align_left">
+		<input type="text" id="eventDate" placeholder="Click here ..."></td>
+	</tr>
+	<tr>
+	<!-- "  style="height: 177px" -->
+
+	<td colspan="2">
+	<table class="outline" style="width: 100%">
+		<tr>
+			<td class="align_left">
+			 <input type="checkbox" class="recur" id="cbox1" value="1">Recurrence</td>
+		</tr>
+		<tr>
+			<!-- "  style="height: 22px" -->
+
+			<td style="vertical-align:top">
+			<!-- " style="display:none" -->
+			<div id="recurbody" style="display:none">
+			<table style="width: 100%; vertical-align:top">
+				<tr>
+					<td>
+						Repeat Every: <select name="delay">
+						<option value="0" selected>1</option>
+						<option value="0" >2</option>
+						<option value="0" >3</option>
+						<option value="0" >4</option>
+						<option value="0" >5</option>
+						<option value="0" >6</option>
+						<option value="0" >7</option>
+						<option value="0" >8</option>
+						<option value="0" >12</option>
+						</select>
+						<select name="span">
+						<option value="0">Hour(s)</option>
+						<option value="1">Day(s)</option>
+						<option value="2" selected>Week(s)</option>
+						<option value="3">Month(s)</option>
+						</select>
+						&nbsp; on
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<table style="width: 100%">
+							<tr align="left">
+								<td style="width: 15px">&nbsp;</td>
+								<td><input type="checkbox" id="cbSunday" value="0"/> Sunday</td>
+							</tr>
+							<tr align="left">
+								<td style="width: 15px">&nbsp;</td>
+								<td><input type="checkbox" id="cbMonday" value="1"/> Monday</td>
+							</tr>
+							<tr align="left">
+								<td style="width: 15px">&nbsp;</td>
+								<td><input type="checkbox" id="cbTuesday" value="2"/> Tuesday</td>
+							</tr>
+							<tr align="left">
+								<td style="width: 15px">&nbsp;</td>
+								<td><input type="checkbox" id="cbWednesday" value="3"/> Wednesday</td>
+							</tr>
+							<tr align="left">
+								<td style="width: 15px">&nbsp;</td>
+								<td><input type="checkbox" id="cbThursday" value="4"/> Thursday</td>
+							</tr>
+							<tr align="left">
+								<td style="width: 15px">&nbsp;</td>
+								<td><input type="checkbox" id="cbFriday" value="5"/> Friday</td>
+							</tr>
+							<tr align="left">
+								<td style="width: 15px">&nbsp;</td>
+								<td><input type="checkbox" id="cbSaturday" value="6"/> Saturday</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>Stop repeating notifications after ... </b>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="radio" name="constraint" value="0" checked> Once<br>
+						<input type="radio" name="constraint" value="1"> Never Stop<br>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					<input type="radio" name="constraint" value="2"> ... by count 
+					<select name="delay0">
+					<option value="0" selected>0</option>
+					<option value="1" >1</option>
+					<option value="2" >2</option>
+					<option value="3" >3</option>
+					<option value="4" >4</option>
+					<option value="5" >5</option>
+					<option value="6" >6</option>
+					<option value="7" >7</option>
+					<option value="8" >8</option>
+					<option value="9" >9</option>
+					</select>
+					<select name="delay1">
+					<option value="0" >0</option>
+					<option value="1" selected>1</option>
+					<option value="2" >2</option>
+					<option value="3" >3</option>
+					<option value="4" >4</option>
+					<option value="5" >5</option>
+					<option value="6" >6</option>
+					<option value="7" >7</option>
+					<option value="8" >8</option>
+					<option value="9" >9</option>
+					</select> occurrences</td>
+				</tr>
+				<tr>
+					<td class="align_left">
+						<input type="radio" name="constraint" value="2"> ... by date 
+						<input type="text" id="stopDate" placeholder="Stop Date .."></td>
+				</tr>
+			</table>
+			</div>
+			</td>
+		</tr>
+	</table>
+		</td>
+	</tr>
+	<tr>
+	<td colspan="2" class="align_right">
+	&nbsp;<input type="submit" value="Create new event" /> </td>
+	</tr>
+	
+	</table>
+	
+	
+		<label class="switch switch-flat">
+	&nbsp;<span class="switch-label" data-on="On" data-off="Off"></span><span class="switch-handle"></span></label></div>
+	
+	
+	</form>
+	
+</body>
+</html>

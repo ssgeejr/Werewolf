@@ -1,0 +1,12 @@
+# https://examples.javacodegeeks.com/enterprise-java/quartz/quartz-scheduler-properties-example/
+
+#org.quartz.scheduler.instanceName=JavacodeGeeksScheduler
+#org.quartz.scheduler.instanceId=99199
+#org.quartz.scheduler.rmi.export=false
+#org.quartz.scheduler.rmi.proxy=false
+#org.quartz.threadPool.class=org.quartz.simpl.SimpleThreadPool
+#org.quartz.threadPool.threadCount=3
+#org.quartz.context.key.QuartzTopic=QuartzPorperties
+
+# #### REQUIRED SETTINGS ####
+org.quartz.threadPool.threadCount=3

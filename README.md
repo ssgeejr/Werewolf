@@ -17,3 +17,26 @@ https://dzone.com/articles/getting-started-quartz
 
 
 
+Project Tree: 
+
+|   pom.xml
+|
+\---src
+    \---main
+        +---java
+        |   \---com
+        |       \---ioexcept
+        |               \---werewolf
+        |                       *.java
+        |
+        +---resources
+        |       log4j.dtd
+        |       log4j.xml
+        |       quartz.properties
+        |       quartz_data.xml
+        |
+        \---webapp
+            |   index.jsp
+            |
+            \---WEB-INF
+                    web.xml
